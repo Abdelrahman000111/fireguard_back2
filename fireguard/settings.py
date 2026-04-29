@@ -14,11 +14,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-dev-key-change-me')
 # ⚠️ IMPORTANT: production = False
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '.pythonanywhere.com'
-]
+ALLOWED_HOSTS = ['*']
 
 
 # ========================
