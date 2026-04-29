@@ -16,6 +16,7 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     'abdelrahman0001.pythonanywhere.com',
+    '.pythonanywhere.com',
     'localhost',
     '127.0.0.1'
 ]
