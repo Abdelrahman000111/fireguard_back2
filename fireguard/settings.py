@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-dev-key-change-me')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'abdelrahman0001.pythonanywhere.com'
+    'bodareda0001.pythonanywhere.com'
 ]
 
 
