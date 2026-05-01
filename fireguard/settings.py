@@ -1,24 +1,23 @@
 from pathlib import Path
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 # ========================
 # Base Setup
 # ========================
-load_dotenv()
-
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load .env explicitly
+env_path = os.path.join(BASE_DIR, '.env')
+load_dotenv(env_path)
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'unsafe-dev-key-change-me')
 
-# ⚠️ IMPORTANT: production = False
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+# Production
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    'abdelrahman0001.pythonanywhere.com',
-    '.pythonanywhere.com',
-    'localhost',
-    '127.0.0.1'
+    'abdelrahman0001.pythonanywhere.com'
 ]
 
 
@@ -126,6 +125,7 @@ USE_TZ = True
 # ========================
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -152,15 +152,18 @@ REST_FRAMEWORK = {
 
 
 # ========================
-# CORS (Flutter / Frontend)
+# CORS
 # ========================
 CORS_ALLOW_ALL_ORIGINS = True
 
 
 # ========================
-# Firebase
+# Firebase (Safe Handling)
 # ========================
 FIREBASE_CREDENTIALS_PATH = os.getenv(
     'FIREBASE_CREDENTIALS_PATH',
-    BASE_DIR / 'firebase_credentials.json'
+    str(BASE_DIR / 'firebase_credentials.json')
 )
+
+if not os.path.exists(FIREBASE_CREDENTIALS_PATH):
+    FIREBASE_CREDENTIALS_PATH = None
